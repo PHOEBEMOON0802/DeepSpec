@@ -521,7 +521,7 @@ class Gemma4DSparkModel(Gemma4PreTrainedModel):
             target_pred_indices = (safe_label_indices - 1).clamp(min=0)
             hidden_chunks = []
             anchor_chunk_size = 64
-            num_anchors = anchor_position.size(1)
+            num_anchors = anchor_positions.size(1)
             for c_start in range(0, num_anchors, anchor_chunk_size):
                 c_end = min(c_start + anchor_chunk_size, num_anchors)
                 chunk_indices = target_pred_indices[:, c_start:c_end]
